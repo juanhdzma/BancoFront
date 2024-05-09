@@ -1,0 +1,77 @@
+.container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px 30px 30px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    box-shadow: 0 8px 16px var(--dark-color);
+    text-align: center;
+}
+
+.logo-container {
+    margin-bottom: 10px;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+}
+
+.title {
+    font-size: 42px;
+    margin-bottom: 5px;
+    color: var(--black-color);
+}
+
+.subtitle {
+    font-size: 14px;
+    color: var(--subtitle-color);
+    margin-top: -5px;
+}
+
+.separator {
+    margin: 20px 0 30px; /* Adjusted margin to add more space below the separator */
+    border: none;
+    border-top: 2px solid var(--subtitle-color);
+    width: 100%;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.button {
+    padding: 15px 30px;
+    border: 2px solid transparent;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+}
+
+.button-cliente {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+.button-sucursal {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.button:hover {
+    box-shadow: 0 4px 8px var(--dark-color);
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.button:active {
+    transform: translateY(2px);
+}
