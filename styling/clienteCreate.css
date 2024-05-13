@@ -1,0 +1,125 @@
+.container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 30px; /* Increased padding */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.title {
+    font-size: 28px;
+    margin-bottom: 10px; /* Reduced margin */
+    color: var(--primary-color);
+}
+
+.separator {
+    margin: 20px 0 20px; /* Adjusted margin */
+    border: none;
+    border-top: 2px solid #ccc;
+    width: 100%;
+}
+
+.input-container {
+    margin-bottom: 20px; /* Added margin to separate input fields */
+    position: relative; /* Make input container a positioning context */
+}
+
+.label {
+    position: absolute; /* Position label absolutely */
+    top: 50%; /* Align label vertically */
+    left: 10px; /* Add some left padding */
+    transform: translateY(-50%); /* Center label vertically */
+    font-weight: bold; /* Make label text bold */
+}
+
+.form-input {
+    width: calc(100% - 20px); /* Make input fields full width */
+    padding: 12px; /* Increased padding */
+    font-size: 16px;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    box-sizing: border-box;
+    outline: none;
+    padding-left: 10px; /* Add left padding to create space for label */
+    color: var(--grey-color); /* Added color for the placeholder text */
+}
+
+.form-input::placeholder {
+    color: var(--subtitle-color); /* Changed placeholder color */
+}
+
+.form-button {
+    padding: 12px 24px; /* Adjusted padding */
+    border: 2px solid var(--primary-color); /* Added border color */
+    border-radius: 10px; /* Adjusted border-radius */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+}
+
+.form-button {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+.form-button:hover {
+    background-color: var(--dark-color);
+    color: var(--primary-color); /* Change text color on hover */
+    border-color: var(--dark-color); /* Change border color on hover */
+}
+
+.form-button:hover {
+    transform: translateY(-2px);
+}
+
+.form-button:active {
+    transform: translateY(2px);
+}
+
+.signup-text {
+    font-size: 14px;
+    color: var(--subtitle-color);
+    margin-top: 20px;
+}
+
+.signup-text a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+.return-button {
+    margin-top: 10px; /* Added margin-top */
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    outline: none;
+}
+
+.return-button:hover {
+    background-color: var(--dark-color);
+}
+
+#error-message {
+    font-size: 14px; /* Set smaller font size */
+    text-align: center; /* Center the text */
+    color: red; /* Change color to red for error messages */
+    display: block; /* Display error message as a block element */
+    margin-bottom: 20px; /* Add bottom margin to separate from button */
+}
+
+.label {
+    display: none; /* Hide labels */
+}

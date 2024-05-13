@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta</title>
+    <link rel="stylesheet" href="../styling/base.css">
+    <link rel="stylesheet" href="../styling/clienteCreate.css"> <!-- Assuming you have separate styling for registration page -->
+    <base href="/sites/">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Crear Cuenta</h1>
+        <hr class="separator">
+        <form id="register-form" class="register-form">
+            <div class="input-container">
+                <label class='label' for="cedula">Cédula:</label>
+                <input type="text" id="cedula" name="cedula" class="form-input" placeholder="Ingrese la cédula">
+            </div>
+            <div class="input-container">
+                <label class='label' for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" class="form-input" placeholder="Ingrese el teléfono">
+            </div>
+            <div class="input-container">
+                <label class='label' for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Ingrese el nombre">
+            </div>
+            <div class="input-container">
+                <label class='label' for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" class="form-input" placeholder="Ingrese el apellido">
+            </div>
+            <span id="error-message" class="error-message"></span> <!-- Error message span -->
+            <button type="submit" class="form-button">Crear</button>
+        </form>
+        <p class="signup-text">¿Ya tienes una cuenta? <a onclick="goLogin()">Inicia sesión</a></p>
+    </div>
+    <button onclick="goHome()" class="return-button">Volver al Inicio</button>
+    <script src="../scripts/clienteCreate.js"></script> <!-- Assuming you have separate script for registration page -->
+</body>
+</html>

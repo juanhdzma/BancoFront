@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente</title>
+    <link rel="stylesheet" href="../styling/base.css">
+    <link rel="stylesheet" href="../styling/clienteLogin.css">
+    <base href="/sites/">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Iniciar Sesión</h1>
+        <hr class="separator">
+        <form id="client-form" class="client-form">
+            <div class="input-button-container">
+                <input type="text" id="client-id" name="client-id" class="form-input" placeholder="Ingrese la cédula">
+                <button type="submit" class="form-button">Buscar</button>
+            </div>
+            <span id="error-message" class="error-message"></span> <!-- Error message span -->
+        </form>
+        <p class="signup-text">¿No tienes una cuenta? <a onclick="goCreate()">Crea una</a></p>
+    </div>
+    <button onclick="goHome()" class="return-button">Volver al Inicio</button>
+    <script src="../scripts/clienteLogin.js"></script>
+</body>
+</html>

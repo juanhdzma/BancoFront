@@ -1,5 +1,5 @@
-function goToClientePage() {
-    window.location.href = "cliente.html";
+function goToClienteLoginPage() {
+    window.location.href = "clienteLogin.html";
 }
 
 function goToSucursalPage() {
