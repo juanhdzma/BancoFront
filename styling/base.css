@@ -20,12 +20,13 @@ body {
 }
 
 .return-button {
+    outline: none;
     position: fixed;
     top: 20px;
     left: 20px;
-    padding: 10px;
+    padding: 10px 20px;
     border: 2px solid transparent;
-    border-radius: 10%;
+    border-radius: 10px;
     background-color: var(--primary-color);
     color: var(--background-color);
     font-size: 16px;
@@ -38,7 +39,9 @@ body {
 .return-button:hover {
     background-color: var(--background-color);
     color: var(--primary-color);
-    border-color: var(--primary-color);
     box-shadow: 0 4px 8px var(--dark-color);
     transform: translateY(-2px);
+    background-color: var(--dark-color);
 }
+
+

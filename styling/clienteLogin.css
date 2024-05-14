@@ -84,24 +84,7 @@
 }
 
 .signup-text a:hover {
-    text-decoration: underline;
-}
-
-.return-button {
-    margin-top: 10px; /* Added margin-top */
-    padding: 10px 20px;
-    background-color: var(--primary-color);
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    outline: none;
-}
-
-.return-button:hover {
-    background-color: var(--dark-color);
 }
 
 #error-message {
