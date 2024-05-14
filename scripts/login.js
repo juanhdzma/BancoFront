@@ -1,11 +1,11 @@
 const API_URL = 'http://ec2-3-137-174-126.us-east-2.compute.amazonaws.com/BancoV1/';
 
 function goHome() {
-    window.location.href = '../sites/home.html';
+    window.location.href = '../index.html';
 }
 
 function goCreate() {
-    window.location.href = '../sites/clienteCreate.html';
+    window.location.href = '../sites/create.html';
 }
 
 

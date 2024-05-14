@@ -1,11 +1,11 @@
 const API_URL = 'http://ec2-3-137-174-126.us-east-2.compute.amazonaws.com/BancoV1/';
 
 function goHome() {
-    window.location.href = '../sites/home.html';
+    window.location.href = '../index.html';
 }
 
 function goLogin() {
-    window.location.href = '../sites/clienteLogin.html';
+    window.location.href = '../sites/login.html';
 }
 
 document.getElementById("register-form").onsubmit = async function (event) {
@@ -59,10 +59,11 @@ document.getElementById("register-form").onsubmit = async function (event) {
             name: clientName,
             last_name: clientLastName
         }
-        const isValid = sendCreateRequest(object, errorMessage);
-        if (isValid) {
+        const responsesJSON = sendCreateRequest(object, errorMessage);
+        if (responsesJSON) {
+            window.location.href = 'client_home?data=' + JSON.stringify(result);
         }
-        return isValid;
+        return responsesJSON;
     }
 };
 
@@ -78,7 +79,7 @@ async function sendCreateRequest(object, errorMessage) {
         if (response.status == 201) {
             errorMessage.textContent = "Usuario creado correctamente";
             errorMessage.style.color = "green";
-            return true;
+            return result;
         } else if (response.status == 409) {
             errorMessage.textContent = "Ya existe un usuario registrado con esa cédula o teléfono";
             errorMessage.style.color = "red";
