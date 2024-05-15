@@ -8,7 +8,6 @@ function goCreate() {
     window.location.href = '../sites/create.html';
 }
 
-
 async function validateUserInDatabase(clientId, errorMessage) {
     try {
         const response = await fetch(API_URL + "user/" + clientId, {
@@ -17,9 +16,7 @@ async function validateUserInDatabase(clientId, errorMessage) {
         const result = await response.json();
 
         if (response.status == 200) {
-            errorMessage.textContent = result.data.name + " " + result.data.last_name;
-            errorMessage.style.color = "green";
-            return true;
+            return result.data;
         } else if (response.status < 500) {
             errorMessage.textContent = "Cédula no registrada en el sistema";
             errorMessage.style.color = "red";
@@ -35,7 +32,6 @@ async function validateUserInDatabase(clientId, errorMessage) {
         return false;
     }
 }
-
 
 document.getElementById("client-form").onsubmit = async function (event) {
     event.preventDefault();
@@ -55,11 +51,11 @@ document.getElementById("client-form").onsubmit = async function (event) {
         return false;
     }
     else {
-        const isValid = validateUserInDatabase(clientId, errorMessage);
-        if (isValid) {
-            console.log("Llegue bueb");
+        const result = await validateUserInDatabase(clientId, errorMessage);
+        if (result) {
+            window.location.href = 'client_home.html?data=' + JSON.stringify(result);
         }
-        return isValid;
+        return result;
     }
 };
 

@@ -59,9 +59,9 @@ document.getElementById("register-form").onsubmit = async function (event) {
             name: clientName,
             last_name: clientLastName
         }
-        const responsesJSON = sendCreateRequest(object, errorMessage);
+        const responsesJSON = await sendCreateRequest(object, errorMessage);
         if (responsesJSON) {
-            window.location.href = 'client_home?data=' + JSON.stringify(result);
+            showConfirmationPopup(object);
         }
         return responsesJSON;
     }
@@ -74,12 +74,10 @@ async function sendCreateRequest(object, errorMessage) {
             headers: new Headers({ 'Content-type': 'application/json' }),
             body: JSON.stringify(object)
         });
-        const result = await response.json();
-
         if (response.status == 201) {
             errorMessage.textContent = "Usuario creado correctamente";
             errorMessage.style.color = "green";
-            return result;
+            return true;
         } else if (response.status == 409) {
             errorMessage.textContent = "Ya existe un usuario registrado con esa cédula o teléfono";
             errorMessage.style.color = "red";
@@ -94,4 +92,15 @@ async function sendCreateRequest(object, errorMessage) {
         errorMessage.style.color = "red";
         return false;
     }
+}
+
+function showConfirmationPopup(result) {
+    const popup = document.getElementById("confirmation-popup");
+    popup.style.display = "flex";
+
+    const continueButton = document.getElementById("continue-button");
+    continueButton.onclick = function () {
+        popup.style.display = "none";
+        window.location.href = 'client_home.html?data=' + JSON.stringify(result);
+    };
 }
