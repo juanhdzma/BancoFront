@@ -15,7 +15,7 @@
 .section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 20px;
     background-color: #fff;
@@ -23,26 +23,20 @@
     box-shadow: 0 4px 8px var(--dark-color);
     text-align: center;
     min-height: 300px; /* Ajusta según el tamaño deseado */
+    position: relative;
 }
 
 /* Título de cada sección */
 .section-title {
     font-size: 24px;
-    margin-bottom: 15px;
+    margin-bottom: 25px; /* Reduce the padding between title and hr */
     color: var(--primary-color);
-}
-
-/* Divisor entre título y contenido */
-.section hr {
-    width: 80%;
-    border: none;
-    border-top: 2px solid #ccc;
-    margin: 20px 0;
+    position: relative;
 }
 
 /* Contenedores de entrada */
 .input-container {
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Adjusted for better spacing */
     position: relative;
     width: 100%;
 }
@@ -57,21 +51,29 @@
     display: none; /* Ocultar etiquetas */
 }
 
+form {
+    min-width: 300px;
+}
+
 /* Entradas del formulario */
 .form-input {
-    width: calc(100% - 20px);
+    width: 100%; /* Make inputs take the full width */
     padding: 12px;
     font-size: 16px;
     border: 2px solid var(--primary-color);
     border-radius: 10px;
     box-sizing: border-box;
     outline: none;
-    padding-left: 10px;
     color: var(--grey-color);
 }
 
 .form-input::placeholder {
     color: var(--subtitle-color);
+}
+
+.form-input:focus {
+    border-color: var(--dark-color);
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
 }
 
 /* Botón del formulario */
@@ -148,6 +150,11 @@
 }
 
 /* Tabla de usuarios */
+.usuarios-table-wrapper {
+    max-height: 200px; /* Altura suficiente para 4 filas */
+    overflow-y: auto;
+}
+
 .usuarios-table {
     width: 100%;
     border-collapse: collapse;
@@ -169,11 +176,14 @@
     color: var(--grey-color);
 }
 
-/* Título principal */
-.title {
-    text-align: center;
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: var(--black-color);
-    width: 100%;
+.usuarios-table-wrapper::-webkit-scrollbar {
+    width: 8px;
+}
+
+.usuarios-table-wrapper::-webkit-scrollbar-track {
+    background: var(--background-color);
+}
+
+.usuarios-table-wrapper::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
 }

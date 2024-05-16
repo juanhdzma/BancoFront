@@ -16,7 +16,6 @@
         <!-- Crear Cuenta Section -->
         <div id="crear-cuenta" class="section">
             <h2 class="section-title">Crear Cuenta</h2>
-            <hr>
             <form id="register-form" class="register-form">
                 <div class="input-container">
                     <label class='label' for="user_id">User ID:</label>
@@ -40,7 +39,6 @@
         <!-- Consignar Section -->
         <div id="consignar" class="section">
             <h2 class="section-title">Consignar</h2>
-            <hr>
             <form id="consignar-form" class="consignar-form">
                 <div class="input-container">
                     <label class='label' for="destination_account">Número de Cuenta:</label>
@@ -58,44 +56,63 @@
         <!-- Usuarios Section -->
         <div id="usuarios" class="section">
             <h2 class="section-title">Usuarios</h2>
-            <hr>
-            <table class="usuarios-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Correo Electrónico</th>
-                        <th>Tipo de Cuenta</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Juan Perez</td>
-                        <td>juan.perez@example.com</td>
-                        <td>Type 1</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Maria Lopez</td>
-                        <td>maria.lopez@example.com</td>
-                        <td>Type 2</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Carlos Ruiz</td>
-                        <td>carlos.ruiz@example.com</td>
-                        <td>Type 3</td>
-                    </tr>
-                    <!-- Add more rows as needed -->
-                </tbody>
-            </table>
+            <div class="usuarios-table-wrapper">
+                <table class="usuarios-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Correo Electrónico</th>
+                            <th>Tipo de Cuenta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Juan Perez</td>
+                            <td>juan.perez@example.com</td>
+                            <td>Type 1</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Maria Lopez</td>
+                            <td>maria.lopez@example.com</td>
+                            <td>Type 2</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Carlos Ruiz</td>
+                            <td>carlos.ruiz@example.com</td>
+                            <td>Type 3</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Juan Perez</td>
+                            <td>juan.perez@example.com</td>
+                            <td>Type 1</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Maria Lopez</td>
+                            <td>maria.lopez@example.com</td>
+                            <td>Type 2</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Carlos Ruiz</td>
+                            <td>carlos.ruiz@example.com</td>
+                            <td>Type 3</td>
+                        </tr>
+
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- Desactivar Cuenta Section -->
         <div id="desactivar-cuenta" class="section">
             <h2 class="section-title">Desactivar Cuenta</h2>
-            <hr>
             <form id="desactivar-form" class="desactivar-form">
                 <div class="input-container">
                     <label class='label' for="cuenta-desactivar">User ID:</label>
@@ -106,7 +123,7 @@
             </form>
         </div>
     </div>
-    
+
     <button onclick="goHome()" class="return-button">
         <img src="../sources/Home.png" alt="Volver al Inicio">
     </button>
