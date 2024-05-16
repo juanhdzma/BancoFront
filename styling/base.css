@@ -35,9 +35,12 @@ body {
     transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
+.return-button img {
+    width: 30px;
+    height: 30px;
+}
+
 .return-button:hover {
-    background-color: var(--background-color);
-    color: var(--primary-color);
     box-shadow: 0 4px 8px var(--dark-color);
     transform: translateY(-2px);
 }

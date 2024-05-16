@@ -36,12 +36,15 @@
         </form>
         <p class="signup-text">¿Ya tienes una cuenta? <a onclick="goLogin()">Inicia sesión</a></p>
     </div>
-    <button onclick="goHome()" class="return-button">Volver al Inicio</button>
+    <button onclick="goHome()" class="return-button">
+        <img src="../sources/Home.png" alt="Volver al Inicio">
+    </button>
 
     <!-- Confirmation Popup -->
     <div id="confirmation-popup" class="popup">
         <div class="popup-content">
-            <img src="../sources/Success.webp" alt="Success" class="successImage"> <!-- Replace with actual path to your image -->
+            <img src="../sources/Success.webp" alt="Success" class="successImage">
+            <!-- Replace with actual path to your image -->
             <p>Usuario creado correctamente</p>
             <button id="continue-button" class="popup-button">Continuar</button>
         </div>

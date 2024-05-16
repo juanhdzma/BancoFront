@@ -1,9 +1,179 @@
+/* Contenedor principal */
 .container {
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    box-shadow: 0 8px 16px var(--dark-color);
 }
 
-.page-name {
-    font-size: 36px;
+/* Cada sección */
+.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--dark-color);
+    text-align: center;
+    min-height: 300px; /* Ajusta según el tamaño deseado */
+}
+
+/* Título de cada sección */
+.section-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+/* Divisor entre título y contenido */
+.section hr {
+    width: 80%;
+    border: none;
+    border-top: 2px solid #ccc;
+    margin: 20px 0;
+}
+
+/* Contenedores de entrada */
+.input-container {
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+}
+
+/* Etiquetas */
+.label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-weight: bold;
+    display: none; /* Ocultar etiquetas */
+}
+
+/* Entradas del formulario */
+.form-input {
+    width: calc(100% - 20px);
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    box-sizing: border-box;
+    outline: none;
+    padding-left: 10px;
+    color: var(--grey-color);
+}
+
+.form-input::placeholder {
+    color: var(--subtitle-color);
+}
+
+/* Botón del formulario */
+.form-button {
+    padding: 12px 24px;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    outline: none;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+.form-button:hover {
+    box-shadow: 0 4px 8px var(--dark-color);
+    transform: translateY(-2px);
+}
+
+.form-button:active {
+    transform: translateY(2px);
+}
+
+/* Texto de registro */
+.signup-text {
+    font-size: 14px;
+    color: var(--subtitle-color);
     margin-top: 20px;
+}
+
+.signup-text a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.signup-text a:hover {
+    cursor: pointer;
+}
+
+/* Mensaje de error */
+#error-message {
+    font-size: 14px;
+    text-align: center;
+    color: red;
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* Grupo de botones */
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.button-group input[type="radio"] {
+    display: none;
+}
+
+.button-group label {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button-group input[type="radio"]:checked + label {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+/* Tabla de usuarios */
+.usuarios-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.usuarios-table th, .usuarios-table td {
+    padding: 12px;
+    border: 1px solid var(--subtitle-color);
+    text-align: left;
+}
+
+.usuarios-table th {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+.usuarios-table td {
+    color: var(--grey-color);
+}
+
+/* Título principal */
+.title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
     color: var(--black-color);
+    width: 100%;
 }
