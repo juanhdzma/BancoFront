@@ -1,0 +1,23 @@
+name: CD
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  Deploy:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v3
+    - name: Pull Docker image
+      env:
+        DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+      run: sudo docker pull $DOCKER_USERNAME/banco_front
+    - name: Delete Old Container
+      run: sudo docker rm -f banco_front || true
+    - name: Run Docker Container
+      env:
+          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+      run: sudo docker run -d -p 80:80 --name banco_front $DOCKER_USERNAME/banco_front
+    - name: Delete Old Images
+      run: sudo docker image prune -f
