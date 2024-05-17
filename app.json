@@ -1,0 +1,5 @@
+{
+    "name": "Banco Front",
+    "version": "1.0.0",
+    "docker_name": "banco-front"
+}

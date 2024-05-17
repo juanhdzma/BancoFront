@@ -22,8 +22,8 @@ jobs:
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
       run: |
-        docker build -t $DOCKER_USERNAME/banco_front:${{steps.app_properties.outputs.version}} -f Dockerfile .
-        docker tag $DOCKER_USERNAME/banco_front:${{steps.app_properties.outputs.version}} $DOCKER_USERNAME/banco_front:latest
+        docker build -t $DOCKER_USERNAME/${{steps.app_properties.outputs.docker_name}}:${{steps.app_properties.outputs.version}} -f Dockerfile .
+        docker tag $DOCKER_USERNAME/${{steps.app_properties.outputs.docker_name}}:${{steps.app_properties.outputs.version}} $DOCKER_USERNAME/${{steps.app_properties.outputs.docker_name}}:latest
     - name: Login Dockerhub
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
@@ -33,5 +33,5 @@ jobs:
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
       run: |
-        docker push $DOCKER_USERNAME/banco_front:${{steps.app_properties.outputs.version}}
-        docker push $DOCKER_USERNAME/banco_front:latest
+        docker push $DOCKER_USERNAME/${{steps.app_properties.outputs.docker_name}}:${{steps.app_properties.outputs.version}}
+        docker push $DOCKER_USERNAME/${{steps.app_properties.outputs.docker_name}}:latest
