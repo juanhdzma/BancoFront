@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    environment: master
+    steps:
+    - uses: actions/checkout@v3
+    - name: Read Version
+      id: app_properties
+      uses: ActionsTools/read-json-action@main
+      with:
+        file_path: "app.json"
+    - name: Print Version
+      run: |
+        echo "Version: ${{steps.app_properties.outputs.version}}"
+    - name: Build the Docker Image
+      env:
+        DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+      run: |
+        docker build -t $DOCKER_USERNAME/banco_front:${{steps.app_properties.outputs.version}} -f Dockerfile .
+        docker tag $DOCKER_USERNAME/banco_front:${{steps.app_properties.outputs.version}} $DOCKER_USERNAME/banco_front:latest
+    - name: Login Dockerhub
+      env:
+        DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD docker.io
+    - name: Push to Dockerhub
+      env:
+        DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+      run: |
+        docker push $DOCKER_USERNAME/banco_front:${{steps.app_properties.outputs.version}}
+        docker push $DOCKER_USERNAME/banco_front:latest
