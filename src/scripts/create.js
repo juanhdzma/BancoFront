@@ -76,8 +76,6 @@ async function sendCreateRequest(object, errorMessage) {
         });
         
         if (response.status == 201) {
-            errorMessage.textContent = "Usuario creado correctamente";
-            errorMessage.style.color = "green";
             return true;
         } else if (response.status == 409) {
             errorMessage.textContent = "Ya existe un usuario registrado con esa cédula o teléfono";

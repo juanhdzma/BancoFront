@@ -111,12 +111,12 @@ form {
 }
 
 /* Mensaje de error */
-#error-message {
-    font-size: 14px;
-    text-align: center;
-    color: red;
-    display: block;
-    margin-bottom: 20px;
+.error-message {
+    font-size: 16px; /* Set smaller font size */
+    text-align: center; /* Center the text */
+    color: red; /* Change color to red for error messages */
+    display: block; /* Display error message as a block element */
+    margin-bottom: 15px; /* Add bottom margin to separate from button */
 }
 
 /* Grupo de botones */
