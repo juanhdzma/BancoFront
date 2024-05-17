@@ -16,7 +16,7 @@
         <hr class="separator">
         <form id="client-form" class="client-form">
             <div class="input-button-container">
-                <input type="text" id="client-id" name="client-id" class="form-input" placeholder="Ingrese la cédula">
+                <input type="text" id="client-id" name="client-id" class="form-input" placeholder="Ingrese la cédula" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                 <button type="submit" class="form-button">Buscar</button>
             </div>
             <span id="error-message" class="error-message"></span> <!-- Error message span -->

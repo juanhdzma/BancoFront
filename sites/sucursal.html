@@ -19,17 +19,17 @@
             <form id="register-form" class="register-form">
                 <div class="input-container">
                     <label class='label' for="user_id">User ID:</label>
-                    <input type="text" id="user_id" name="user_id" class="form-input" placeholder="Ingrese el User ID">
+                    <input type="text" id="user_id" name="user_id" class="form-input" placeholder="Ingrese el User ID" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                 </div>
                 <div class="input-container">
                     <label class='label'>Account Type:</label>
                     <div class="button-group">
-                        <input type="radio" id="type1" name="account_type" value="type1">
-                        <label for="type1">Type 1</label>
-                        <input type="radio" id="type2" name="account_type" value="type2">
-                        <label for="type2">Type 2</label>
-                        <input type="radio" id="type3" name="account_type" value="type3">
-                        <label for="type3">Type 3</label>
+                        <input type="radio" id="type1" name="account_type" value="Ahorros">
+                        <label for="type1">Ahorros</label>
+                        <input type="radio" id="type2" name="account_type" value="Corriente">
+                        <label for="type2">Corriente</label>
+                        <input type="radio" id="type3" name="account_type" value="Tarjeta de Credito">
+                        <label for="type3">Tarjeta de Credito</label>
                     </div>
                 </div>
                 <button type="submit" class="form-button">Crear</button>
@@ -43,11 +43,11 @@
                 <div class="input-container">
                     <label class='label' for="destination_account">Número de Cuenta:</label>
                     <input type="text" id="destination_account" name="destination_account" class="form-input"
-                        placeholder="Ingrese el número de cuenta">
+                        placeholder="Ingrese el número de cuenta" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                 </div>
                 <div class="input-container">
                     <label class='label' for="value">Monto:</label>
-                    <input type="number" id="value" name="value" class="form-input" placeholder="Ingrese el monto">
+                    <input type="number" id="value" name="value" class="form-input" placeholder="Ingrese el monto" min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                 </div>
                 <button type="submit" class="form-button">Consignar</button>
             </form>
@@ -62,49 +62,12 @@
                         <tr>
                             <th>ID</th>
                             <th>Nombre</th>
-                            <th>Correo Electrónico</th>
-                            <th>Tipo de Cuenta</th>
+                            <th>Apellido</th>
+                            <th>Teléfono</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Juan Perez</td>
-                            <td>juan.perez@example.com</td>
-                            <td>Type 1</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Maria Lopez</td>
-                            <td>maria.lopez@example.com</td>
-                            <td>Type 2</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Carlos Ruiz</td>
-                            <td>carlos.ruiz@example.com</td>
-                            <td>Type 3</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Juan Perez</td>
-                            <td>juan.perez@example.com</td>
-                            <td>Type 1</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Maria Lopez</td>
-                            <td>maria.lopez@example.com</td>
-                            <td>Type 2</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Carlos Ruiz</td>
-                            <td>carlos.ruiz@example.com</td>
-                            <td>Type 3</td>
-                        </tr>
-
-                        <!-- Add more rows as needed -->
+                    <tbody id="usuarios-tbody">
+                        <!-- Rows will be inserted here dynamically -->
                     </tbody>
                 </table>
             </div>

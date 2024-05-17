@@ -71,11 +71,6 @@ form {
     color: var(--subtitle-color);
 }
 
-.form-input:focus {
-    border-color: var(--dark-color);
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
-}
-
 /* Botón del formulario */
 .form-button {
     padding: 12px 24px;
@@ -151,8 +146,10 @@ form {
 
 /* Tabla de usuarios */
 .usuarios-table-wrapper {
-    max-height: 200px; /* Altura suficiente para 4 filas */
+    max-height: 185px; /* Altura suficiente para 4 filas */
     overflow-y: auto;
+    position: relative;
+    scroll-snap-type: y mandatory;
 }
 
 .usuarios-table {
@@ -164,12 +161,19 @@ form {
 .usuarios-table th, .usuarios-table td {
     padding: 12px;
     border: 1px solid var(--subtitle-color);
-    text-align: left;
+    text-align: center;
+}
+
+tr {
+    scroll-snap-align: start;
 }
 
 .usuarios-table th {
     background-color: var(--primary-color);
     color: var(--background-color);
+    position: sticky;
+    top: -1px;
+    z-index: 100;
 }
 
 .usuarios-table td {

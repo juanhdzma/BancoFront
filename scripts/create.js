@@ -74,6 +74,7 @@ async function sendCreateRequest(object, errorMessage) {
             headers: new Headers({ 'Content-type': 'application/json' }),
             body: JSON.stringify(object)
         });
+        
         if (response.status == 201) {
             errorMessage.textContent = "Usuario creado correctamente";
             errorMessage.style.color = "green";
