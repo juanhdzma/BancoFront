@@ -1,14 +1,25 @@
-/* Contenedor principal */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--background-color); /* Puedes cambiar esto por el color de fondo deseado */
+    overflow: hidden;
+}
+
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     max-width: 1200px;
-    margin: 50px auto;
-    padding: 20px;
+    width: 100%; /* Asegura que el contenedor ocupe el ancho disponible */
+    margin: 100px auto;
+    padding: 30px;
     background-color: var(--background-color);
     border-radius: 10px;
     box-shadow: 0 8px 16px var(--dark-color);
+    z-index: 1;
 }
 
 /* Cada sección */
@@ -24,6 +35,7 @@
     text-align: center;
     min-height: 300px; /* Ajusta según el tamaño deseado */
     position: relative;
+    z-index: 1;
 }
 
 /* Título de cada sección */
@@ -152,10 +164,14 @@ form {
     scroll-snap-type: y mandatory;
 }
 
+#usuarios-table-wrapper {
+    visibility: hidden;
+}
+
 .usuarios-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .usuarios-table th, .usuarios-table td {

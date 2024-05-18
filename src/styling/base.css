@@ -59,7 +59,7 @@ body {
     display: none; /* Initially invisible */
     align-items: center; /* Center vertically */
     justify-content: center; /* Center horizontally */
-}
+}   
 
 .popup-content {
     background-color: #fff;
@@ -67,7 +67,7 @@ body {
     border-radius: 10px;
     border: 2px solid var(--primary-color);
     width: 80%; /* Could be more or less, depending on screen size */
-    max-width: 400px; /* Max width for the popup */
+    max-width: 500px; /* Max width for the popup */
     text-align: center;
     box-shadow: 0 4px 8px var(--dark-color);
     animation: fadeIn 0.3s;

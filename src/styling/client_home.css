@@ -1,0 +1,204 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.main-container {
+    width: 90%;
+    max-width: 1200px;
+    background-color: #fff; /* Fondo blanco para el contenedor principal */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--dark-color);
+    overflow: hidden;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    padding: 20px;
+    color: var(--background-color);
+    border-radius: 10px;
+}
+
+.balance {
+    font-size: 48px; /* Tamaño más grande para el balance */
+    font-weight: bold;
+}
+
+.user-info {
+    text-align: right;
+    font-size: 20px;
+}
+
+#name {
+    font-size: 25px;
+    font-weight: bold; /* Negrilla para el nombre */
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    gap: 20px;
+}
+
+.account-container, .transfer-container{
+    width: 40%;
+}
+
+.history-container {
+    flex: 1 1 auto;
+    width: 60%;
+}
+
+.account-container,
+.history-container {
+    background-color: #fff; /* Fondo blanco para cada sección */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--dark-color);
+}
+
+.account-container h2,
+.history-container h2,
+.transfer-container h2 {
+    color: var(--primary-color); /* Títulos en rojo */
+    margin-bottom: 20px;
+    text-align: center; /* Títulos centrados */
+}
+
+.table-wrapper {
+    max-height: 185px; /* Altura suficiente para 4 filas */
+    overflow-y: auto;
+    position: relative;
+    scroll-snap-type: y mandatory;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0px;
+}
+
+.table th, .table td {
+    padding: 12px;
+    border: 1px solid var(--subtitle-color);
+    text-align: center;
+}
+
+tr {
+    scroll-snap-align: start;
+}
+
+.table th{
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    position: sticky;
+    top: -1px;
+    z-index: 100;
+}
+
+.table td {
+    color: var(--grey-color);
+}
+
+.table-wrapper::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: var(--background-color);
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+}
+
+.transfer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--dark-color);
+    text-align: center;
+    min-height: 300px; /* Ajusta según el tamaño deseado */
+    position: relative;
+    z-index: 1;
+}
+
+.transfer-title {
+    font-size: 24px;
+    margin-bottom: 25px; /* Reduce the padding between title and hr */
+    color: var(--primary-color);
+    position: relative;
+}
+
+form {
+    min-width: 300px;
+}
+
+.input-container {
+    margin-bottom: 15px; /* Adjusted for better spacing */
+    position: relative;
+    width: 100%;
+}
+
+.form-input {
+    width: 100%; /* Make inputs take the full width */
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    box-sizing: border-box;
+    outline: none;
+    color: var(--grey-color);
+}
+
+.form-input::placeholder {
+    color: var(--subtitle-color);
+}
+
+/* Botón del formulario */
+.form-button {
+    padding: 12px 24px;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    outline: none;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+.form-button:hover {
+    box-shadow: 0 4px 8px var(--dark-color);
+    transform: translateY(-2px);
+}
+
+.form-button:active {
+    transform: translateY(2px);
+}
+
+label {
+    display: none;
+}
+
+.error-message {
+    font-size: 16px; /* Set smaller font size */
+    text-align: center; /* Center the text */
+    color: red; /* Change color to red for error messages */
+    display: block; /* Display error message as a block element */
+    margin-bottom: 15px; /* Add bottom margin to separate from button */
+}

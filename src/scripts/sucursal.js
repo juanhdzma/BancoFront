@@ -27,6 +27,7 @@ async function addContentUsers() {
                 `;
         tbody.appendChild(row);
     });
+    document.getElementById('usuarios-table-wrapper').style.visibility = 'visible';
 }
 
 document.getElementById("register-form").onsubmit = async function (event) {
@@ -67,7 +68,6 @@ document.getElementById("register-form").onsubmit = async function (event) {
         return responsesJSON;
     }
 };
-
 
 document.getElementById("consignar-form").onsubmit = async function (event) {
     event.preventDefault();
