@@ -4,22 +4,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Home</title>
+    <title>Dashboard</title>
     <link rel="icon" type="image/png" href="../sources/Logo.png">
     <link rel="stylesheet" href="../styling/base.css">
     <link rel="stylesheet" href="../styling/client_home.css">
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="title">Client Home</h1>
-        <hr class="separator">
-        <div id="json-output" class="json-output"></div>
-        <button onclick="goHome()" class="return-button">
-            <img src="../sources/Home.png" alt="Volver al Inicio">
-        </button>
+    <button onclick="goHome()" class="return-button">
+        <img src="../sources/Home.png" alt="Volver al Inicio">
+    </button>
+    <div class="notFound">
+        <img src="../sources/NotFound.png" alt="Not Found" class="notFound" id="notFound">
+        <div class="notFoundMessage">No encontre nada que mostrarte. Debes crear una cuenta en tu sucursal de confianza
+            para desbloquear nuevas opciones</div>
+    </div>
+    <div class="main-container" id="main-container">
+        <div class="header">
+            <div class="balance" id="balance"></div>
+            <div class="user-info">
+                <div id="name"></div>
+                <div id="phone">+57 318 (795) 1218</div>
+                <div id="cedula"></div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="first-container">
+                <div class="account-container">
+                    <h2>Cuentas y Balances</h2>
+                    <div class="table-wrapper">
+                        <table class='table' id="accounts-table">
+                            <thead>
+                                <tr>
+                                    <th>Número de Cuenta</th>
+                                    <th>Tipo de Cuenta</th>
+                                    <th>Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="accounts-tb">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="transferir" class="transfer-container">
+                    <h2 class="transfer-title">Transferencia</h2>
+                    <form id="transferir-form" class="transferir-form">
+                        <div class="input-row">
+                            <div class="input-container">
+                                <label class='label' for="options">Opciones:</label>
+                                <div class="custom-select-container">
+                                    <select id="options" name="options" class="form-input custom-select">
+                                        <option value="" disabled selected>Cuenta de Origen</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-container">
+                                <input type="text" id="destination_account" name="destination_account"
+                                    class="form-input" placeholder="Cuenta de Destino"
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <label class='label' for="value">Monto:</label>
+                            <input type="number" id="value" name="value" class="form-input no-arrows"
+                                placeholder="Ingrese el monto" min="0"
+                                onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                        </div>
+                        <div id="error-message-tranferir" class="error-message"></div> <!-- Error message span -->
+                        <button type="submit" class="form-button">Consignar</button>
+                    </form>
+                </div>
+
+
+            </div>
+
+            <div class="history-container">
+                <h2>Historial de Transacciones</h2>
+                <div class="table-wrapper-full">
+                    <img src="../sources/NotFound.png" alt="Not Found" class="notFoundImage" id="notFoundHistory">
+                    <div class="noRecordMessage">Es hora de empezar a hacer tus transacciones</div>
+                    <table class='table' id="history-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Fecha</th>
+                                <th>Origen</th>
+                                <th>Destino</th>
+                                <th>Monto</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-tb">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Confirmation Popup -->
+    <div id="confirmation-popup" class="popup">
+        <div class="popup-content">
+            <img src="../sources/Success.png" alt="Success" class="successImage">
+            <!-- Replace with actual path to your image -->
+            <p id='popup-message'></p>
+            <button id="continue-button" class="popup-button">Continuar</button>
+        </div>
     </div>
     <script src="../scripts/client_home.js"></script>
+    <!-- Assuming you have separate script for the functionality -->
 </body>
 
 </html>

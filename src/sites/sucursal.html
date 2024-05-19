@@ -19,7 +19,8 @@
             <form id="register-form" class="register-form">
                 <div class="input-container">
                     <label class='label' for="user_id">User ID:</label>
-                    <input type="text" id="user_id" name="user_id" class="form-input" placeholder="Ingrese el User ID" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                    <input type="text" id="user_id" name="user_id" class="form-input" placeholder="Ingrese el User ID"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                 </div>
                 <div class="input-container">
                     <label class='label'>Account Type:</label>
@@ -44,11 +45,13 @@
                 <div class="input-container">
                     <label class='label' for="destination_account">Número de Cuenta:</label>
                     <input type="text" id="destination_account" name="destination_account" class="form-input"
-                        placeholder="Ingrese el número de cuenta" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                        placeholder="Ingrese el número de cuenta"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                 </div>
                 <div class="input-container">
                     <label class='label' for="value">Monto:</label>
-                    <input type="number" id="value" name="value" class="form-input" placeholder="Ingrese el monto" min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                    <input type="number" id="value" name="value" class="form-input no-arrows" placeholder="Ingrese el monto"
+                        min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                 </div>
                 <div id="error-message-consignar" class="error-message"></div> <!-- Error message span -->
                 <button type="submit" class="form-button">Consignar</button>
@@ -58,7 +61,7 @@
         <!-- Usuarios Section -->
         <div id="usuarios" class="section">
             <h2 class="section-title">Usuarios</h2>
-            <div class="usuarios-table-wrapper">
+            <div class="usuarios-table-wrapper" id="usuarios-table-wrapper">
                 <table class="usuarios-table">
                     <thead>
                         <tr>
@@ -97,7 +100,7 @@
     <!-- Confirmation Popup -->
     <div id="confirmation-popup" class="popup">
         <div class="popup-content">
-            <img src="../sources/Success.webp" alt="Success" class="successImage">
+            <img src="../sources/Success.png" alt="Success" class="successImage">
             <!-- Replace with actual path to your image -->
             <p id='popup-message'></p>
             <button id="continue-button" class="popup-button">Continuar</button>
