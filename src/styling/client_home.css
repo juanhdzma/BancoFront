@@ -2,7 +2,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
     margin: 0;
 }
 
@@ -47,15 +47,31 @@ body {
     justify-content: space-between;
     padding: 20px 0;
     gap: 20px;
+    width: 100%;
 }
 
 .account-container, .transfer-container{
-    width: 40%;
+    width: 100%;
+}
+
+.account-container {
+    margin-bottom: 30px;
+    height: 300px;
+}
+
+.transfer-container {
+    height: 295px;
+}
+
+.first-container {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
 }
 
 .history-container {
     flex: 1 1 auto;
-    width: 60%;
+    width: 55%;
 }
 
 .account-container,
@@ -76,6 +92,13 @@ body {
 
 .table-wrapper {
     max-height: 185px; /* Altura suficiente para 4 filas */
+    overflow-y: auto;
+    position: relative;
+    scroll-snap-type: y mandatory;
+}
+
+.table-wrapper-full {
+    max-height: 515px; /* Altura suficiente para 4 filas */
     overflow-y: auto;
     position: relative;
     scroll-snap-type: y mandatory;
@@ -109,15 +132,18 @@ tr {
     color: var(--grey-color);
 }
 
-.table-wrapper::-webkit-scrollbar {
+.table-wrapper::-webkit-scrollbar,
+.table-wrapper-full::-webkit-scrollbar {
     width: 8px;
 }
 
-.table-wrapper::-webkit-scrollbar-track {
+.table-wrapper::-webkit-scrollbar-track,
+.table-wrapper-full::-webkit-scrollbar-track {
     background: var(--background-color);
 }
 
-.table-wrapper::-webkit-scrollbar-thumb {
+.table-wrapper::-webkit-scrollbar-thumb,
+.table-wrapper-full::-webkit-scrollbar-thumb {
     background: var(--primary-color);
 }
 
@@ -131,7 +157,6 @@ tr {
     border-radius: 10px;
     box-shadow: 0 4px 8px var(--dark-color);
     text-align: center;
-    min-height: 300px; /* Ajusta según el tamaño deseado */
     position: relative;
     z-index: 1;
 }
@@ -201,4 +226,43 @@ label {
     color: red; /* Change color to red for error messages */
     display: block; /* Display error message as a block element */
     margin-bottom: 15px; /* Add bottom margin to separate from button */
+}
+
+/* #history-table {
+    display: none;
+} */
+
+.table-wrapper-full .notFoundImage {
+    width: 65%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+}
+
+.noRecordMessage {
+    padding-top: 20px;
+    max-width: 65%;
+    font-size: 30px;
+    font-weight: 500;
+    margin: auto;
+    text-align: center;
+    display: none;
+}
+
+.notFound {
+    height: 80%;
+    text-align: center;
+    display: none;
+}
+
+.notFoundMessage {
+    max-width: 50%;
+    font-size: 30px;
+    font-weight: 500;
+    margin: auto;
+}
+
+.main-container {
+    display: none;
 }
