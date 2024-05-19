@@ -4,16 +4,13 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: var(--background-color); /* Puedes cambiar esto por el color de fondo deseado */
-    overflow: hidden;
 }
 
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    max-width: 1200px;
-    width: 100%; /* Asegura que el contenedor ocupe el ancho disponible */
+    width: 80%;
     margin: 100px auto;
     padding: 30px;
     background-color: var(--background-color);
@@ -206,4 +203,10 @@ tr {
 
 .usuarios-table-wrapper::-webkit-scrollbar-thumb {
     background: var(--primary-color);
+}
+
+.no-arrows::-webkit-outer-spin-button,
+.no-arrows::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

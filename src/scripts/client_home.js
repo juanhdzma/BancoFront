@@ -8,6 +8,7 @@ function getJsonFromUrl() {
 const jsonData = getJsonFromUrl();
 const API_URL = 'http://ec2-3-137-174-126.us-east-2.compute.amazonaws.com/BancoV1/';
 const accounts = [];
+let accountsInfo;
 let balance = 0;
 
 function goHome() {
@@ -15,11 +16,11 @@ function goHome() {
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
-    const accountsInfo = await getUserAccounts();
+    accountsInfo = await getUserAccounts();
     if (accountsInfo === null) {
         return noAccountsMessage();
     }
-    await fillAccountData(accountsInfo);
+    await fillAccountData();
     await fillRecordData();
 
     document.getElementById("main-container").style.display = 'block';
@@ -42,8 +43,9 @@ function noAccountsMessage() {
     document.querySelectorAll('.notFound').forEach(element => Object.assign(element.style, { display: 'inline' }));
 }
 
-async function fillAccountData(accountsInfo) {
+async function fillAccountData() {
     const tbody = document.getElementById('accounts-tb');
+    const select = document.getElementById("options");
     tbody.innerHTML = '';
 
     accountsInfo.forEach(account => {
@@ -57,6 +59,11 @@ async function fillAccountData(accountsInfo) {
                     <td>${formatCurrency(account.balance)}</td>
                 `;
         tbody.appendChild(row);
+
+        var opt = document.createElement("option");
+        opt.value = account.id;
+        opt.textContent = "Cuenta #" + account.id;
+        select.appendChild(opt);
     });
 
     document.getElementById('balance').innerHTML = formatCurrency(balance);
@@ -82,6 +89,14 @@ async function fillRecordData() {
     await Promise.all(fetchPromises).then(() => {
         record = tmpRecord.reduce((acc, val) => acc.concat(val), []);
         record.sort((a, b) => new Date(b.transaction_datetime) - new Date(a.transaction_datetime));
+
+        const removeDuplicates = (array, key) => {
+            const map = new Map();
+            array.forEach(item => map.set(item[key], item));
+            return Array.from(map.values());
+        };
+
+        record = removeDuplicates(record, 'id');
     });
 
     if (record.length === 0) {
@@ -119,71 +134,91 @@ async function fillRecordData() {
     }
 }
 
-// document.getElementById("consignar-form").onsubmit = async function (event) {
-//     event.preventDefault();
-//     const destinationAccount = document.getElementById("destination_account");
-//     const valueConsigment = document.getElementById("value");
-//     var errorMessage = document.getElementById("error-message-consignar");
+document.getElementById("transferir-form").onsubmit = async function (event) {
+    event.preventDefault();
+    const destinationAccount = document.getElementById("destination_account");
+    const valueConsigment = document.getElementById("value");
+    const sourceAccount = document.getElementById("options");
+    var errorMessage = document.getElementById("error-message-tranferir");
 
-//     // Validate cedula
-//     if (destinationAccount.value.trim() === "") {
-//         errorMessage.textContent = "Por favor ingrese la cuenta del cliente";
-//         errorMessage.style.color = "red";
-//         return false;
-//     } else if (isNaN(destinationAccount.value)) {
-//         errorMessage.textContent = "Por favor ingrese una cuenta válida";
-//         errorMessage.style.color = "red";
-//         return false;
-//     } else if (parseInt(destinationAccount.value) < 1) {
-//         errorMessage.textContent = "Por favor ingrese una cuenta válida";
-//         errorMessage.style.color = "red";
-//         return false;
-//     } else if (valueConsigment.value < 0 || valueConsigment.value === '') {
-//         errorMessage.textContent = "Por favor ingrese un valor de consignación válido";
-//         errorMessage.style.color = "red";
-//         return false;
-//     } else {
-//         const object = {
-//             destination_account: destinationAccount.value,
-//             value: valueConsigment.value
-//         }
-//         const responsesJSON = await sendConsigmentRequest(object, errorMessage);
-//         if (responsesJSON) {
-//             showConfirmationPopup("Consignación realizada exitosamente");
-//             errorMessage.textContent = '';
-//             destinationAccount.value = '';
-//             valueConsigment.value = '';
-//         }
-//         return responsesJSON;
-//     }
-// };
+    if (sourceAccount.value === ""){
+        errorMessage.textContent = "Por favor seleccione la cuenta de origen";
+        errorMessage.style.color = "red";
+        return false;
+    }else if (accounts.indexOf(parseInt(sourceAccount.value)) === -1) {
+        errorMessage.textContent = "Por favor ingrese una de sus cuentas como origen";
+        errorMessage.style.color = "red";
+        return false;
+    } else if (destinationAccount.value.trim() === "") {
+        errorMessage.textContent = "Por favor ingrese la cuenta de destino";
+        errorMessage.style.color = "red";
+        return false;
+    } else if (isNaN(destinationAccount.value)) {
+        errorMessage.textContent = "Por favor ingrese una cuenta de destino válida";
+        errorMessage.style.color = "red";
+        return false;
+    } else if (parseInt(destinationAccount.value) < 1) {
+        errorMessage.textContent = "Por favor ingrese una cuenta de destino válida";
+        errorMessage.style.color = "red";
+        return false;
+    } else if (valueConsigment.value < 0 || valueConsigment.value === '') {
+        errorMessage.textContent = "Por favor ingrese un valor de transferencia válido";
+        errorMessage.style.color = "red";
+        return false;
+    } else if (destinationAccount.value.toString() == sourceAccount.value) {
+        errorMessage.textContent = "Ambas cuentas no pueden ser iguales";
+        errorMessage.style.color = "red";
+        return false;
+    } else {
+        const object = {
+            source_account: sourceAccount.value,
+            destination_account: destinationAccount.value,
+            value: valueConsigment.value
+        }
+        const responsesJSON = await sendTransferRequest(object, errorMessage);
+        if (responsesJSON) {
+            showConfirmationPopup("Transferencia realizada exitosamente");
+            errorMessage.textContent = '';
+            sourceAccount.innerHTML = '<option value="" disabled selected>Cuenta de Origen</option>';
+            destinationAccount.value = '';
+            valueConsigment.value = '';
+            await fillRecordData();
+            await fillAccountData();
+        }
+        return responsesJSON;
+    }
+};
 
+async function sendTransferRequest(object, errorMessage) {
+    try {
+        const response = await fetch(API_URL + "transfer", {
+            method: 'POST',
+            headers: new Headers({ 'Content-type': 'application/json' }),
+            body: JSON.stringify(object)
+        });
+        const result = await response.json();
 
-
-// async function sendConsigmentRequest(object, errorMessage) {
-//     try {
-//         const response = await fetch(API_URL + "consignment", {
-//             method: 'POST',
-//             headers: new Headers({ 'Content-type': 'application/json' }),
-//             body: JSON.stringify(object)
-//         });
-//         if (response.status == 200) {
-//             return true;
-//         } else if (response.status == 400) {
-//             errorMessage.textContent = "La cuenta no existe en la base de datos";
-//             errorMessage.style.color = "red";
-//             return false;
-//         } else {
-//             errorMessage.textContent = "Error al realizar consignación";
-//             errorMessage.style.color = "red";
-//             return false;
-//         }
-//     } catch (error) {
-//         errorMessage.textContent = "Error al realizar consignación";
-//         errorMessage.style.color = "red";
-//         return false;
-//     }
-// }
+        if (response.status == 200) {
+            return true;
+        } else if (result.message == 'Saldo insuficiente para transferir') {
+            errorMessage.textContent = "Saldo insuficiente para transferir";
+            errorMessage.style.color = "red";
+            return false;
+        } else if (result.message == 'La cuenta de destino no existe') {
+            errorMessage.textContent = "La cuenta de destino no existe";
+            errorMessage.style.color = "red";
+            return false;
+        } else {
+            errorMessage.textContent = "Error al realizar transferencia";
+            errorMessage.style.color = "red";
+            return false;
+        }
+    } catch (error) {
+        errorMessage.textContent = "Error al realizar transferencia";
+        errorMessage.style.color = "red";
+        return false;
+    }
+}
 
 
 function showConfirmationPopup(message) {

@@ -16,7 +16,8 @@
     </button>
     <div class="notFound">
         <img src="../sources/NotFound.png" alt="Not Found" class="notFound" id="notFound">
-        <div class="notFoundMessage">No encontre nada que mostrarte. Debes crear una cuenta en tu sucursal de confianza para desbloquear nuevas opciones</div>
+        <div class="notFoundMessage">No encontre nada que mostrarte. Debes crear una cuenta en tu sucursal de confianza
+            para desbloquear nuevas opciones</div>
     </div>
     <div class="main-container" id="main-container">
         <div class="header">
@@ -49,15 +50,24 @@
                 <div id="transferir" class="transfer-container">
                     <h2 class="transfer-title">Transferencia</h2>
                     <form id="transferir-form" class="transferir-form">
-                        <div class="input-container">
-                            <label class='label' for="destination_account">Número de Cuenta:</label>
-                            <input type="text" id="destination_account" name="destination_account" class="form-input"
-                                placeholder="Ingrese el número de cuenta"
-                                onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                        <div class="input-row">
+                            <div class="input-container">
+                                <label class='label' for="options">Opciones:</label>
+                                <div class="custom-select-container">
+                                    <select id="options" name="options" class="form-input custom-select">
+                                        <option value="" disabled selected>Cuenta de Origen</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-container">
+                                <input type="text" id="destination_account" name="destination_account"
+                                    class="form-input" placeholder="Cuenta de Destino"
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                            </div>
                         </div>
                         <div class="input-container">
                             <label class='label' for="value">Monto:</label>
-                            <input type="number" id="value" name="value" class="form-input"
+                            <input type="number" id="value" name="value" class="form-input no-arrows"
                                 placeholder="Ingrese el monto" min="0"
                                 onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                         </div>
@@ -65,6 +75,8 @@
                         <button type="submit" class="form-button">Consignar</button>
                     </form>
                 </div>
+
+
             </div>
 
             <div class="history-container">
