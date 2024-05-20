@@ -7,7 +7,7 @@ function getJsonFromUrl() {
 
 const jsonData = getJsonFromUrl();
 const API_URL = 'http://ec2-3-137-174-126.us-east-2.compute.amazonaws.com/BancoV1/';
-const accounts = [];
+let accounts = [];
 let accountsInfo;
 let balance = 0;
 
@@ -47,6 +47,8 @@ async function fillAccountData() {
     const tbody = document.getElementById('accounts-tb');
     const select = document.getElementById("options");
     tbody.innerHTML = '';
+    balance = 0;
+    accounts = [];
 
     accountsInfo.forEach(account => {
         balance += account.balance;
